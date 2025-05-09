@@ -225,7 +225,7 @@ export default function VotingPie({
                           height={"100px"}
                         />
                         <span style={{ marginLeft:"1rem", color: "black", display: "flex" }}>
-                          {dog.name}
+                          {dog.name} {`(${dog.dogId})`}
                         </span>
                       </div>
                     ))}
