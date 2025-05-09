@@ -203,8 +203,34 @@ export default function VotingPie({
           ) : (
             <>
               <h2>
-                Most Voted: {mostVotedPoint} {renderIcon()}
+                Most Voted:{" "}
+                {isDogs
+                  ? dogsss.find((d) => d.dogId == mostVotedPoint).name
+                  : mostVotedPoint}{" "}
+                {renderIcon()}
               </h2>
+              {isDogs && (
+                <>
+                  <strong style={{ color: "purple", display: "flex" }}>
+                    Votes included:{" "}
+                  </strong>
+                  {dogsss
+                    .filter((d) => votes.some((v) => v == d.dogId))
+                    .map((dog) => (
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin:" 1rem"}}>
+                        <img
+                          src={
+                            dog.imgUrl
+                          }
+                          height={"100px"}
+                        />
+                        <span style={{ marginLeft:"1rem", color: "black", display: "flex" }}>
+                          {dog.name}
+                        </span>
+                      </div>
+                    ))}
+                </>
+              )}
               <p>
                 {totalVotes} total vote{totalVotes !== 1 ? "s" : ""}
               </p>
