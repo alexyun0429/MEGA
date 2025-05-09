@@ -20,6 +20,10 @@ db.exec(`
 
 app.use(cors(), express.json());
 
+app.get("/", (_req, res) => {
+  res.send("Pointing Poker API is up and running!");
+});
+
 // Get all stories
 app.get("/stories", (req, res) => {
   const rows = db.prepare("SELECT * FROM stories").all();
