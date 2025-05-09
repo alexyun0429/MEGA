@@ -10,10 +10,12 @@ export default function App() {
   const [reveal, setReveal] = useState(false);
   const [username] = useState("User" + Math.floor(Math.random() * 1000));
   const [userVoted, setUserVoted] = useState(false);
+  const [isDogs, setIsDogs] = useState(false);
 
-  const handleVote = (point) => {
+  const handleVote = (point, isDogs = false) => {
+    setIsDogs(isDogs);
     const pointStr = String(point);
-    console.log(point)
+    console.log(point);
     setVotes([...votes, pointStr]);
     setUserVoted(true);
   };
@@ -42,7 +44,7 @@ export default function App() {
             <div className="voting-section">
               <h2>Select your point estimate</h2>
               <div className="katelyn-component-wrapper">
-                <KatelynsComponentDONTDELETE onValueSelect={handleVote} /> 
+                <KatelynsComponentDONTDELETE onValueSelect={handleVote} />
               </div>
               <div className="voting-status">
                 {votes.length > 0 ? (
@@ -66,7 +68,7 @@ export default function App() {
           )}
 
           {/* Voting Pie Chart */}
-          <VotingPie votes={votes} reveal={reveal} />
+          <VotingPie votes={votes} reveal={reveal} isDogs={isDogs} />
 
           {reveal && (
             <div className="reset-section">

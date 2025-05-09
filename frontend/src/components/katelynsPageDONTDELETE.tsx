@@ -13,7 +13,7 @@ export const dogsss = [
 export default function KatelynsComponentDONTDELETE({
   onValueSelect,
 }: {
-  onValueSelect: (value: number) => void;
+  onValueSelect: (value: number, isDogs: boolean) => void;
 }) {
   const [isDogs, setIsDogs] = useState(false);
 
@@ -23,9 +23,9 @@ export default function KatelynsComponentDONTDELETE({
         Change to {!isDogs ? "dogs" : "fibonacci"}
       </button>
       {isDogs ? (
-        <DogPad setSelectedValue={onValueSelect} />
+        <DogPad setSelectedValue={onValueSelect} isDogs={isDogs} />
       ) : (
-        <FibNumberPad setSelectedValue={onValueSelect} />
+        <FibNumberPad setSelectedValue={onValueSelect} isDogs={isDogs} />
       )}
     </>
   );
@@ -33,8 +33,10 @@ export default function KatelynsComponentDONTDELETE({
 
 const FibNumberPad = ({
   setSelectedValue,
+  isDogs,
 }: {
-  setSelectedValue: (value: number) => void;
+  setSelectedValue: (value: number, isDogs: boolean) => void;
+  isDogs: boolean;
 }) => {
   return (
     <div
@@ -48,7 +50,7 @@ const FibNumberPad = ({
       {fibonacciSequence.map((number) => (
         <div key={number}>
           <button
-            onClick={() => setSelectedValue(number)}
+            onClick={() => setSelectedValue(number, isDogs)}
             style={{
               width: "auto",
               fontSize: "18px",
@@ -66,8 +68,10 @@ const FibNumberPad = ({
 
 const DogPad = ({
   setSelectedValue,
+  isDogs,
 }: {
-  setSelectedValue: (value: number) => void;
+  setSelectedValue: (value: number, isDogs: boolean) => void;
+  isDogs: boolean;
 }) => {
   return (
     <div
@@ -81,7 +85,7 @@ const DogPad = ({
       {dogsss.map((dog) => (
         <div key={dog.dogId}>
           <button
-            onClick={() => setSelectedValue(dog.dogId)}
+            onClick={() => setSelectedValue(dog.dogId, isDogs)}
             style={{
               width: "150px",
               fontSize: "18px",
