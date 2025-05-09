@@ -8,7 +8,6 @@ export default function App() {
   const [votes, setVotes] = useState([]);
   const [reveal, setReveal] = useState(false);
   const [username] = useState("User" + Math.floor(Math.random() * 1000));
-  ``;
   const [userVoted, setUserVoted] = useState(false);
 
   const handleVote = (point) => {
