@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import VotingPie from "./components/VotingPie/VotingPie";
-import { UsersList } from "./components/usersList";
-import { WhoAmI } from "./components/whoAmI";
 import PokerTimer from "./components/PokerTimer/PokerTimer";
+import {UsersList} from "./components/usersList/usersList";
 import "./App.css";
 import KatelynsComponentDONTDELETE from "./components/katelynsPageDONTDELETE";
 import AnnoyingPopup from "./components/AnnoyingPopup";
@@ -13,7 +12,6 @@ const DEMO_USERS = ["Alex", "Taylor", "Jordan", "Casey", "Morgan"];
 export default function App() {
   const [votes, setVotes] = useState([]);
   const [reveal, setReveal] = useState(false);
-  const [username] = useState("User" + Math.floor(Math.random() * 1000));
   const [userVoted, setUserVoted] = useState(false);
   const [isDogs, setIsDogs] = useState(false);
 
@@ -24,6 +22,31 @@ export default function App() {
   const nonVotingUsers = DEMO_USERS.filter(
     (user) => !votedUsers.includes(user)
   );
+  const [username, setUsername] = React.useState("");
+    const [error, setError] = React.useState("");
+  
+    React.useEffect(() => {
+      const fetchUsername = async () => {
+        try {
+          const res = await fetch("/whoami", {
+            method: "GET",
+            credentials: "include", // include cookies for session
+          });
+  
+          if (res.ok) {
+            const data = await res.json();
+            setUsername(data.username);
+          } else {
+            const data = await res.json();
+            setError(data.error || "Failed to fetch username");
+          }
+        } catch (err) {
+          setError("Network error");
+        }
+      };
+  
+      fetchUsername();
+    }, []);
 
   const handleVote = (point, isDogs = false) => {
     setIsDogs(isDogs);
@@ -129,8 +152,7 @@ export default function App() {
           )}
         </div>
       </div>
-      <WhoAmI />
-      <UsersList />
+        <UsersList />
       <AnnoyingPopup />
     </div>
   );
