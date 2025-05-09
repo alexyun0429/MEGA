@@ -1,19 +1,148 @@
 .app-container {
   width: 100vw;
   height: 100vh;
-  background: #fff;
+  background: #f0f2f5;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .poker-box {
-  width: 80%;
-  height: 60%;
-  border: 4px solid #333;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  min-height: 500px;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  background: white;
+  overflow: hidden;
+}
+
+.poker-content {
+  padding: 24px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 16px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #333;
+}
+
+.user-info {
+  font-size: 1rem;
+  color: #666;
+}
+
+.voting-section {
+  margin-bottom: 20px;
+}
+
+.point-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.point-buttons button {
+  width: 60px;
+  height: 80px;
+  font-size: 1.5rem;
+  background: #fff;
+  border: 2px solid #1677ff;
+  color: #1677ff;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.point-buttons button:hover {
+  background: #e6f7ff;
+}
+
+.point-buttons button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.reveal-button {
+  background: #1677ff;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reveal-button:hover {
+  background: #4096ff;
+}
+
+.reveal-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.voting-status {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+.reset-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.reset-button {
+  background: #ff4d4f;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.reset-button:hover {
+  background: #ff7875;
+}
+
+@media (max-width: 768px) {
+  .poker-box {
+    width: 95%;
+  }
+
+  .point-buttons button {
+    width: 50px;
+    height: 70px;
+    font-size: 1.2rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
 }
