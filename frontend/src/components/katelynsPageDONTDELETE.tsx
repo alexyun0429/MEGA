@@ -2,16 +2,12 @@ import { useState } from "react";
 
 const fibonacciSequence = [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
 const dogsss = [
-  { dogId: 1, name: "Labrador" },
-  { dogId: 2, name: "German Shepherd" },
-  { dogId: 3, name: "Golden Retriever" },
-  { dogId: 4, name: "Cavoodle" },
-  { dogId: 5, name: "Bulldog" },
-  { dogId: 6, name: "Poodle" },
-  { dogId: 7, name: "Beagle" },
-  { dogId: 8, name: "Shih Tzu" },
-  { dogId: 9, name: "Dachshund" },
-  { dogId: 10, name: "Boxer" },
+  { dogId: 1, name: "Golden Retriever", imgUrl: "/dogs/golden.jpg" },
+  { dogId: 2, name: "Cavoodle", imgUrl: "/dogs/cavoodle.png" },
+  { dogId: 3, name: "Labrador", imgUrl: "/dogs/lab.jpg" },
+  { dogId: 4, name: "German Shepherd", imgUrl: "/dogs/german.jpg" },
+  { dogId: 5, name: "Bulldog", imgUrl: "/dogs/bull.jpg" },
+  { dogId: 6, name: "Chihuahua", imgUrl: "/dogs/chi.jpg" },
 ];
 
 export default function KatelynsComponentDONTDELETE({
@@ -91,6 +87,15 @@ const DogPad = ({
               border: "1px solid #ccc",
             }}
           >
+            <div
+              style={{
+                height: "100px",
+                width: "100px",
+                backgroundImage: `url(${dog.imgUrl})`,
+                backgroundSize: "cover",
+                borderRadius: "5px",
+              }}
+            ></div>
             {dog.name}
           </button>
         </div>
