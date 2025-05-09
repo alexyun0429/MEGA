@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import VotingPie from "./components/VotingPie/VotingPie";
+import {UsersList} from "./components/usersList";
+import {WhoAmI} from "./components/whoAmI";
 import "./App.css";
 import KatelynsComponentDONTDELETE from "./components/katelynsPageDONTDELETE"
 
@@ -77,6 +79,8 @@ export default function App() {
           )}
         </div>
       </div>
+      <WhoAmI />
+      <UsersList />
     </div>
   );
 }
