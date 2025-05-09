@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { Award, Trophy, Code, Dog } from "lucide-react";
 import "./VotingPie.css";
+import { dogsss } from "../katelynsPageDONTDELETE";
 
 // Color constants
 const DEFAULT_COLORS = [
@@ -30,6 +31,7 @@ export default function VotingPie({
   votes = [],
   reveal = false,
   className = "",
+  isDogs
 }) {
   // State for tracking animation
   const [isAnimating, setIsAnimating] = useState(false);
@@ -140,7 +142,7 @@ export default function VotingPie({
       return <Trophy size={24} className="result-icon" />;
     } else {
       // Alternate between dog and code icons
-      return mostVotedPoint % 2 === 0 ? (
+      return isDogs ? (
         <Dog size={24} className="result-icon" />
       ) : (
         <Code size={24} className="result-icon" />
@@ -169,6 +171,7 @@ export default function VotingPie({
                 <span>{totalVotes > 1 ? "CONSENSUS!" : "PERFECT CHOICE!"}</span>
                 <Trophy size={24} />
               </div>
+              {isDogs && <img src={dogsss.find(d => d.dogId == mostVotedPoint).imgUrl} height={"100px"} />}
               <h2>
                 {totalVotes > 1
                   ? `Everyone voted: ${mostVotedPoint}! 🏆`
