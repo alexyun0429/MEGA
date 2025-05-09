@@ -146,3 +146,58 @@ header h1 {
     font-size: 1.5rem;
   }
 }
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  position: relative;
+}
+
+.voting-pie-container {
+  position: relative;
+  margin: 20px auto;
+  min-height: 300px;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voting-pie-container > div {
+  width: 100%;
+}
+
+.voted-users {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #f0f8ff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.voted-users {
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #f0f8ff;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+.explosion {
+  z-index: 1000;
+}
+
+.non-voting-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ff5252;
+  margin-left: 5px;
+}

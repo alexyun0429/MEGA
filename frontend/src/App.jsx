@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import VotingPie from "./components/VotingPie/VotingPie";
-import {UsersList} from "./components/usersList";
-import {WhoAmI} from "./components/whoAmI";
+import { UsersList } from "./components/usersList";
+import { WhoAmI } from "./components/whoAmI";
+import PokerTimer from "./components/PokerTimer/PokerTimer";
 import "./App.css";
-import KatelynsComponentDONTDELETE from "./components/katelynsPageDONTDELETE"
-import AnnoyingPopup from "./components/AnnoyingPopup"
+import KatelynsComponentDONTDELETE from "./components/katelynsPageDONTDELETE";
+import AnnoyingPopup from "./components/AnnoyingPopup";
 
-const POINT_OPTIONS = ["1", "2", "3", "5", "8", "13", "21", "?"];
+// Demo users for the timer
+const DEMO_USERS = ["Alex", "Taylor", "Jordan", "Casey", "Morgan"];
 
 export default function App() {
   const [votes, setVotes] = useState([]);
@@ -15,12 +17,27 @@ export default function App() {
   const [userVoted, setUserVoted] = useState(false);
   const [isDogs, setIsDogs] = useState(false);
 
+  // New state for tracking who has voted
+  const [votedUsers, setVotedUsers] = useState([]);
+
+  // Calculate non-voting users for the timer
+  const nonVotingUsers = DEMO_USERS.filter(
+    (user) => !votedUsers.includes(user)
+  );
+
   const handleVote = (point, isDogs = false) => {
     setIsDogs(isDogs);
     const pointStr = String(point);
     console.log(point);
     setVotes([...votes, pointStr]);
     setUserVoted(true);
+
+    // Simulate a random user voting (for demo purposes)
+    const randomUser =
+      DEMO_USERS[Math.floor(Math.random() * DEMO_USERS.length)];
+    if (!votedUsers.includes(randomUser)) {
+      setVotedUsers([...votedUsers, randomUser]);
+    }
   };
 
   const handleReveal = () => setReveal(true);
@@ -29,6 +46,19 @@ export default function App() {
     setVotes([]);
     setReveal(false);
     setUserVoted(false);
+    setVotedUsers([]); // Reset voted users
+  };
+
+  // Handle timer expiration
+  const handleTimeUp = () => {
+    console.log("Time's up! These users didn't vote:", nonVotingUsers);
+  };
+
+  // Automatically reveal votes when timer expires
+  const handleTimerBreakSeal = () => {
+    if (!reveal && votes.length > 0) {
+      handleReveal();
+    }
   };
 
   return (
@@ -49,6 +79,13 @@ export default function App() {
               <div className="katelyn-component-wrapper">
                 <KatelynsComponentDONTDELETE onValueSelect={handleVote} />
               </div>
+
+              {votedUsers.length > 0 && (
+                <div className="voted-users">
+                  <p>Voted: {votedUsers.join(", ")}</p>
+                </div>
+              )}
+
               <div className="voting-status">
                 {votes.length > 0 ? (
                   <p>
@@ -70,8 +107,18 @@ export default function App() {
             </div>
           )}
 
-          {/* Voting Pie Chart */}
-          <VotingPie votes={votes} reveal={reveal} isDogs={isDogs} />
+          <div className="voting-pie-container">
+            <VotingPie votes={votes} reveal={reveal} isDogs={isDogs} />
+          </div>
+
+          <div className="timer-container">
+            <PokerTimer
+              onTimeUp={handleTimeUp}
+              nonVotingUsers={nonVotingUsers}
+              isRevealed={reveal}
+              onTimerBreakSeal={handleTimerBreakSeal}
+            />
+          </div>
 
           {reveal && (
             <div className="reset-section">
