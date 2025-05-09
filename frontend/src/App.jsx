@@ -98,7 +98,7 @@ export default function App() {
 
           {!reveal && (
             <div className="voting-section">
-              <h2>Select your point estimate</h2>
+              <h2 style={{color: "black"}}>Select your point estimate</h2>
               <div className="katelyn-component-wrapper">
                 <KatelynsComponentDONTDELETE onValueSelect={handleVote} />
               </div>
