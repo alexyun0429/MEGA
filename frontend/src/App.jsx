@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import VotingPie from "./components/VotingPie/VotingPie";
 import "./App.css";
 import KatelynsComponentDONTDELETE from "./components/katelynsPageDONTDELETE"
+import AnnoyingPopup from "./components/AnnoyingPopup"
 
 const POINT_OPTIONS = ["1", "2", "3", "5", "8", "13", "21", "?"];
 
@@ -79,6 +80,7 @@ export default function App() {
           )}
         </div>
       </div>
+      <AnnoyingPopup />
     </div>
   );
 }
