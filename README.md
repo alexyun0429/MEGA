@@ -3,6 +3,6 @@
 We are making a pointing poker app for our hackathon!
 
 Team members: 
-Bae, Nhu, Katelyn, Alex, Irina
+Bay, Nhu, Katelyn, Alex, Irina
 
 ♡♡♡

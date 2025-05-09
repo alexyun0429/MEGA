@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import VotingPie from "./components/VotingPie/VotingPie";
 import "./App.css";
+import KatelynsComponentDONTDELETE from "./components/katelynsPageDONTDELETE"
 
 const POINT_OPTIONS = ["1", "2", "3", "5", "8", "13", "21", "?"];
 
@@ -11,7 +12,9 @@ export default function App() {
   const [userVoted, setUserVoted] = useState(false);
 
   const handleVote = (point) => {
-    setVotes([...votes, point]);
+    const pointStr = String(point);
+    console.log(point)
+    setVotes([...votes, pointStr]);
     setUserVoted(true);
   };
 
@@ -28,7 +31,8 @@ export default function App() {
       <div className="poker-box">
         <div className="poker-content">
           <header>
-            <h1>Planning Poker</h1>
+            <h1>MEGA</h1>
+            <span>Make Estimation Great Again!</span>
             <div className="user-info">
               Playing as: <strong>{username}</strong>
             </div>
@@ -37,17 +41,8 @@ export default function App() {
           {!reveal && (
             <div className="voting-section">
               <h2>Select your point estimate</h2>
-              <div className="point-buttons">
-                {POINT_OPTIONS.map((point) => (
-                  <button
-                    key={point}
-                    onClick={() => handleVote(point)}
-                    disabled={userVoted}
-                    className={userVoted ? "disabled" : ""}
-                  >
-                    {point}
-                  </button>
-                ))}
+              <div className="katelyn-component-wrapper">
+                <KatelynsComponentDONTDELETE onValueSelect={handleVote} /> 
               </div>
               <div className="voting-status">
                 {votes.length > 0 ? (
