@@ -31,7 +31,7 @@ export default function VotingPie({
   votes = [],
   reveal = false,
   className = "",
-  isDogs
+  isDogs,
 }) {
   // State for tracking animation
   const [isAnimating, setIsAnimating] = useState(false);
@@ -171,12 +171,29 @@ export default function VotingPie({
                 <span>{totalVotes > 1 ? "CONSENSUS!" : "PERFECT CHOICE!"}</span>
                 <Trophy size={24} />
               </div>
-              {isDogs && <img src={dogsss.find(d => d.dogId == mostVotedPoint).imgUrl} height={"100px"} />}
-              <h2>
-                {totalVotes > 1
-                  ? `Everyone voted: ${mostVotedPoint}! 🏆`
-                  : `${mostVotedPoint}! 🏆`}
-              </h2>
+              {isDogs ? (
+                <>
+                  <img
+                    src={dogsss.find((d) => d.dogId == mostVotedPoint).imgUrl}
+                    height={"100px"}
+                  />
+                  <h2>
+                    {totalVotes > 1
+                      ? `Everyone voted: ${
+                          dogsss.find((d) => d.dogId == mostVotedPoint).name
+                        }! 🏆`
+                      : `${
+                          dogsss.find((d) => d.dogId == mostVotedPoint).name
+                        }! 🏆`}
+                  </h2>
+                </>
+              ) : (
+                <h2>
+                  {totalVotes > 1
+                    ? `Everyone voted: ${mostVotedPoint}! 🏆`
+                    : `${mostVotedPoint}! 🏆`}
+                </h2>
+              )}
               <p>
                 {totalVotes > 1
                   ? `Perfect agreement with ${totalVotes} votes`
