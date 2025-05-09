@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const fibonacciSequence = [0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
-const dogsss = [
+export const dogsss = [
   { dogId: 1, name: "Golden Retriever", imgUrl: "/dogs/golden.jpg" },
   { dogId: 2, name: "Cavoodle", imgUrl: "/dogs/cavoodle.png" },
   { dogId: 3, name: "Labrador", imgUrl: "/dogs/lab.jpg" },
@@ -40,6 +40,7 @@ const FibNumberPad = ({
     <div
       style={{
         display: "flex",
+        flexWrap: "wrap",
         gap: "10px",
         padding: "10px",
       }}
@@ -72,6 +73,7 @@ const DogPad = ({
     <div
       style={{
         display: "flex",
+        flexWrap: "wrap",
         gap: "10px",
         padding: "10px",
       }}
@@ -81,7 +83,7 @@ const DogPad = ({
           <button
             onClick={() => setSelectedValue(dog.dogId)}
             style={{
-              width: "auto",
+              width: "150px",
               fontSize: "18px",
               borderRadius: "5px",
               border: "1px solid #ccc",
